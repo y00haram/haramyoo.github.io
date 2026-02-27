@@ -8,6 +8,9 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <style>
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -22,10 +25,12 @@
       color: #2563eb;
       text-decoration: none;
       font-weight: 500;
+      transition: all 0.3s ease;
     }
 
     a:hover {
       text-decoration: underline;
+      color: #9333ea;
     }
 
     .container {
@@ -42,7 +47,6 @@
       margin-bottom: 30px;
     }
 
-    /* Profile photo hover */
     .header img {
       width: 120px;
       height: 120px;
@@ -100,6 +104,7 @@
       padding-bottom: 6px;
     }
 
+    /* Cards */
     .card {
       background: white;
       padding: 20px;
@@ -109,6 +114,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       overflow: hidden;
+      opacity: 0;
     }
 
     .card:hover {
@@ -116,7 +122,6 @@
       box-shadow: 0 12px 25px rgba(0,0,0,0.15);
     }
 
-    /* Decorative hover highlight on cards */
     .card::after {
       content: '';
       position: absolute;
@@ -144,6 +149,7 @@
       color: #2563eb;
     }
 
+    /* Contact */
     .contact {
       display: flex;
       flex-direction: column;
@@ -152,6 +158,11 @@
       color: #374151;
     }
 
+    .contact a {
+      margin-left: 5px;
+    }
+
+    /* Hobbies */
     .hobbies {
       display: flex;
       flex-wrap: wrap;
@@ -159,7 +170,6 @@
       margin-top: 5px;
     }
 
-    /* Hobbies hover glow */
     .hobby {
       background: #e0e7ff;
       padding: 5px 10px;
@@ -188,15 +198,26 @@
       border-radius: 12px;
       margin-top: 20px;
     }
+
+    /* Timeline animation */
+    .timeline .card {
+      animation: fadeInCard 0.6s forwards;
+    }
+
+    @keyframes fadeInCard {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
   </style>
 </head>
 
 <body>
   <div class="container">
 
-    <!-- Header with Profile Photo -->
+    <!-- Header -->
     <div class="header">
-      <img src="https://www.istockphoto.com/photos/animated-cats" alt="Haram Yoo Profile Photo">
+      <!-- Replace "images/profile.jpg" with your Mac file path or uploaded image -->
+      <img src="images/profile.jpg" alt="Haram Yoo Profile Photo">
       <div>
         <h1>Haram Yoo</h1>
         <div class="subtitle">Undergraduate Informatics Student @ University of Washington</div>
@@ -207,10 +228,10 @@
     <p>
       I am an undergraduate student at the University of Washington, intending to major in Informatics (Data Science). 
       I enjoy drawing insights from data, building projects, and developing new technical skills. 
-      I am eager to contribute to hands-on projects in data science, analytics, and enhancing student experiences.💌
+      I am eager to contribute to hands-on projects in data science, analytics, and enhancing student experiences.
     </p>
 
-    <!-- Hobbies Section -->
+    <!-- Hobbies -->
     <section id="hobbies">
       <h2>Hobbies</h2>
       <div class="hobbies">
@@ -222,10 +243,15 @@
       </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Interactive Chart -->
+    <section id="stats">
+      <h2>Sports Stats Visualization</h2>
+      <canvas id="sportsChart" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
-
       <div class="card">
         <strong>Java Programming Projects</strong>
         <ul>
@@ -244,94 +270,56 @@
         <div class="skills">Skills: Python, Django, Backend Development</div>
       </div>
 
-      <!-- Decorative Image -->
       <img class="decorative-img" src="images/decorative_project.jpg" alt="Decorative Data Science Image">
     </section>
 
-    <!-- Experience Section -->
+    <!-- Experience Timeline -->
     <section id="experience">
-      <h2>Experience</h2>
-
-      <div class="card">
-        <strong>Marketing Team - Leadership Member</strong> — Korean Student Union, University of Washington (Sept 2025–2028), Seattle, WA
-        <ul>
-          <li>Created videos and reels to increase student engagement and event attendance</li>
-          <li>Managed the organization's Instagram and YouTube accounts</li>
-          <li>Collaborated with student organizations across UW to support shared programs and events</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju (Jan 2025–Jun 2025), Jeju, South Korea
-        <ul>
-          <li>Assisted teachers in preparing instructional materials and organizing computer science events</li>
-          <li>Supported students with hands-on technical support for devices and guided AP Computer Science A assignments</li>
-          <li>Monitored student progress and provided feedback to enhance learning experiences</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>Webmaster</strong> — Computer Science Honor Society, St. Johnsbury Academy Jeju (Aug 2024–Jun 2025)
-        <ul>
-          <li>Built and maintained the first CS Honor Society website using HTML/CSS</li>
-          <li>Collaborated with faculty to design and update content</li>
-          <li>Organized digital content and supported students' onboarding</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>Social Media Department Leader</strong> — Sports Council, St. Johnsbury Academy Jeju (Aug 2023–Jun 2025)
-        <ul>
-          <li>Managed and promoted the school's official Athletic Instagram account</li>
-          <li>Led weekly departmental meetings, tracked tasks and deadlines</li>
-          <li>Published game schedules, match results, and highlights</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>Girls Varsity Basketball Team Captain</strong> — St. Johnsbury Academy Jeju (Oct 2023–Mar 2025)
-        <ul>
-          <li>Led team practices and organized training schedules</li>
-          <li>Communicated between coaches and players</li>
-          <li>Represented team at school and community events</li>
-          <li>Analyzed opponents’ strengths and weaknesses to create game strategies</li>
-        </ul>
+      <h2>Experience Timeline</h2>
+      <div class="timeline">
+        <div class="card" style="animation-delay: 0.1s;">
+          <strong>Marketing Team - Leadership Member</strong> — Korean Student Union, UW
+          <ul>
+            <li>Created videos & reels to increase engagement</li>
+            <li>Managed Instagram & YouTube accounts</li>
+            <li>Collaborated with other student organizations</li>
+          </ul>
+        </div>
+        <div class="card" style="animation-delay: 0.3s;">
+          <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju
+          <ul>
+            <li>Supported students with hands-on device help and AP CS A assignments</li>
+            <li>Prepared instructional materials and events</li>
+          </ul>
+        </div>
+        <div class="card" style="animation-delay: 0.5s;">
+          <strong>Webmaster</strong> — CS Honor Society, St. Johnsbury Academy Jeju
+          <ul>
+            <li>Built and maintained first CS Honor Society website</li>
+            <li>Organized content and supported student onboarding</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- Education & Awards Section -->
+    <!-- Education & Awards -->
     <section id="education">
       <h2>Education & Awards</h2>
       <div class="card">
-        <strong>Bachelor of Science in Informatics: Data Science (Intended)</strong> — University of Washington, Seattle, WA, Expected June 2028
+        <strong>Bachelor of Science in Informatics: Data Science (Intended)</strong> — University of Washington, Seattle, WA
         <ul>
           <li>Completed: CSE 122</li>
           <li>In Progress: CSE 123, INFO 200</li>
         </ul>
       </div>
-
-      <div class="card">
-        <strong>High School Diploma</strong> — St. Johnsbury Academy Jeju, South Korea, June 2025
-        <ul>
-          <li>Grace Hopper Computer Science Award (2024) – Recipient</li>
-          <li>Runner-up, Human Rights and Peace Student Presentation Competition (2024)</li>
-          <li>Earth Network Youth Award, WAE ESG (2024)</li>
-          <li>KISAC High School Girls Basketball All Tournament Award (2025)</li>
-          <li>High School Girls Basketball MVP</li>
-          <li>KISAC High School Girls Swimming Champion (2022), Third Place (2023)</li>
-          <li>Third-Place, Jeju International Tournament Girls Basketball (2024)</li>
-          <li>Third-Place, KISAC Girls Basketball (2025)</li>
-          <li>Exchange Student, St. Johnsbury Academy, Vermont (2023)</li>
-        </ul>
-      </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact">
       <h2>Contact</h2>
       <div class="contact">
-        📧 <a href="mailto:haramy00@uw.edu">haramy00@uw.edu</a>
-        📞 206-251-0562
+        <div>📧 <a href="mailto:haramy00@uw.edu">haramy00@uw.edu</a></div>
+        <div>📞 206-251-0562</div>
       </div>
     </section>
 
@@ -340,5 +328,34 @@
     </div>
 
   </div>
+
+  <!-- Chart.js Script -->
+  <script>
+    const ctx = document.getElementById('sportsChart').getContext('2d');
+    const sportsChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Basketball Points', 'Basketball Assists', 'Swimming Laps', 'Projects Completed'],
+        datasets: [{
+          label: 'High School Achievements',
+          data: [320, 85, 50, 8],
+          backgroundColor: ['#2563eb','#9333ea','#2563eb','#9333ea'],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    // Animate experience cards sequentially
+    const cards = document.querySelectorAll('.timeline .card');
+    cards.forEach((card, index) => {
+      card.style.animation = `fadeInCard 0.6s forwards`;
+      card.style.animationDelay = `${index * 0.3}s`;
+    });
+  </script>
 </body>
 </html>
