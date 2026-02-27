@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haram Yoo | Portfolio</title>
 
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -42,11 +43,11 @@
     }
 
     .header img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #2563eb;
+      border: 3px solid #2563eb;
     }
 
     h1 {
@@ -65,7 +66,7 @@
       font-size: 1.05rem;
       color: #374151;
     }
-    
+
     section {
       margin-top: 50px;
     }
@@ -104,10 +105,25 @@
 
     .contact {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      gap: 6px;
       font-size: 1.05rem;
       color: #374151;
+    }
+
+    .hobbies {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 5px;
+    }
+
+    .hobby {
+      background: #e0e7ff;
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: #1e3a8a;
     }
 
     .footer {
@@ -116,27 +132,49 @@
       color: #6b7280;
       font-size: 0.9rem;
     }
+
+    .decorative-img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
 
+    <!-- Header with Profile Photo -->
     <div class="header">
-      <img src="https://via.placeholder.com/100" alt="Haram Yoo">
+      <img src="https://www.istockphoto.com/photos/animated-cats" alt="Haram Yoo Profile Photo">
       <div>
         <h1>Haram Yoo</h1>
         <div class="subtitle">Undergraduate Informatics Student @ University of Washington</div>
       </div>
     </div>
 
+    <!-- Bio -->
     <p>
-      I am an undergraduate student at the University of Washington, intending to major in Informatics. 
+      I am an undergraduate student at the University of Washington, intending to major in Informatics (Data Science). 
       I enjoy drawing insights from data, building projects, and developing new technical skills. 
-      My interests include data science, analytics, and improving student experiences through technology. 
-      I am eager to contribute to hands-on projects in this field and grow as a data scientist.
+      I am eager to contribute to hands-on projects in data science, analytics, and enhancing student experiences.
     </p>
 
+    <!-- Hobbies Section -->
+    <section id="hobbies">
+      <h2>Hobbies</h2>
+      <div class="hobbies">
+        <div class="hobby">Piano</div>
+        <div class="hobby">K-drama</div>
+        <div class="hobby">Photography</div>
+        <div class="hobby">Traveling</div>
+        <div class="hobby">Reading</div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
     <section id="projects">
       <h2>Projects</h2>
 
@@ -157,44 +195,98 @@
         </ul>
         <div class="skills">Skills: Python, Django, Backend Development</div>
       </div>
+
+      <!-- Decorative Image -->
+      <img class="decorative-img" src="images/decorative_project.jpg" alt="Decorative Data Science Image">
     </section>
 
+    <!-- Experience Section -->
     <section id="experience">
       <h2>Experience</h2>
 
       <div class="card">
-        <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju
+        <strong>Marketing Team - Leadership Member</strong> — Korean Student Union, University of Washington (Sept 2025–2028), Seattle, WA
         <ul>
-          <li>Provided technical support for 100+ student devices</li>
-          <li>Assisted students with Java programming and debugging</li>
-          <li>Supported backend development in a Django project</li>
+          <li>Created videos and reels to increase student engagement and event attendance</li>
+          <li>Managed the organization's Instagram and YouTube accounts</li>
+          <li>Collaborated with student organizations across UW to support shared programs and events</li>
         </ul>
       </div>
 
       <div class="card">
-        <strong>Webmaster</strong> — Computer Science Honor Society
+        <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju (Jan 2025–Jun 2025), Jeju, South Korea
         <ul>
-          <li>Designed and maintained the organization’s website using HTML/CSS</li>
-          <li>Managed online content and supported student onboarding</li>
+          <li>Assisted teachers in preparing instructional materials and organizing computer science events</li>
+          <li>Supported students with hands-on technical support for devices and guided AP Computer Science A assignments</li>
+          <li>Monitored student progress and provided feedback to enhance learning experiences</li>
         </ul>
       </div>
 
       <div class="card">
-        <strong>Marketing Leadership Team</strong> — Korean Student Union (UW)
+        <strong>Webmaster</strong> — Computer Science Honor Society, St. Johnsbury Academy Jeju (Aug 2024–Jun 2025)
         <ul>
-          <li>Planned and executed marketing strategies for campus events</li>
-          <li>Designed promotional materials and analyzed engagement trends</li>
+          <li>Built and maintained the first CS Honor Society website using HTML/CSS</li>
+          <li>Collaborated with faculty to design and update content</li>
+          <li>Organized digital content and supported students' onboarding</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>Social Media Department Leader</strong> — Sports Council, St. Johnsbury Academy Jeju (Aug 2023–Jun 2025)
+        <ul>
+          <li>Managed and promoted the school's official Athletic Instagram account</li>
+          <li>Led weekly departmental meetings, tracked tasks and deadlines</li>
+          <li>Published game schedules, match results, and highlights</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>Girls Varsity Basketball Team Captain</strong> — St. Johnsbury Academy Jeju (Oct 2023–Mar 2025)
+        <ul>
+          <li>Led team practices and organized training schedules</li>
+          <li>Communicated between coaches and players</li>
+          <li>Represented team at school and community events</li>
+          <li>Analyzed opponents’ strengths and weaknesses to create game strategies</li>
         </ul>
       </div>
     </section>
 
+    <!-- Education & Awards Section -->
+    <section id="education">
+      <h2>Education & Awards</h2>
+      <div class="card">
+        <strong>Bachelor of Science in Informatics: Data Science (Intended)</strong> — University of Washington, Seattle, WA, Expected June 2028
+        <ul>
+          <li>Completed: CSE 122</li>
+          <li>In Progress: CSE 123, INFO 200</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>High School Diploma</strong> — St. Johnsbury Academy Jeju, South Korea, June 2025
+        <ul>
+          <li>Grace Hopper Computer Science Award (2024) – Recipient</li>
+          <li>Runner-up, Human Rights and Peace Student Presentation Competition (2024)</li>
+          <li>Earth Network Youth Award, WAE ESG (2024)</li>
+          <li>KISAC High School Girls Basketball All Tournament Award (2025)</li>
+          <li>High School Girls Basketball MVP</li>
+          <li>KISAC High School Girls Swimming Champion (2022), Third Place (2023)</li>
+          <li>Third-Place, Jeju International Tournament Girls Basketball (2024)</li>
+          <li>Third-Place, KISAC Girls Basketball (2025)</li>
+          <li>Exchange Student, St. Johnsbury Academy, Vermont (2023)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact">
       <h2>Contact</h2>
       <div class="contact">
         📧 <a href="mailto:haramy00@uw.edu">haramy00@uw.edu</a>
+        📞 206-251-0562
       </div>
     </section>
-    
+
     <div class="footer">
       © 2026 Haram Yoo
     </div>
