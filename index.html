@@ -3,364 +3,316 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Haram Yoo | Portfolio</title>
+  <title>Haram Yoo | Creative Portfolio</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
 
   <style>
+    * { box-sizing: border-box; }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(150deg, #fef9ff, #e0f7fa);
       margin: 0;
-      padding: 0;
+      background: radial-gradient(circle at top left, #f5e9ff, #e0f7fa, #ffffff);
       color: #1f2937;
-      line-height: 1.6;
       overflow-x: hidden;
     }
 
-    a {
-      color: #2563eb;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
+    .gradient-orb {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(147,51,234,0.18), transparent 60%);
+      filter: blur(80px);
+      z-index: -1;
+      animation: float 15s infinite alternate ease-in-out;
     }
 
-    a:hover {
-      color: #9333ea;
-      text-decoration: underline;
+    @keyframes float {
+      from { transform: translate(-50px, -30px); }
+      to { transform: translate(50px, 30px); }
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 70px 20px;
     }
 
-    /* Header */
-    .header {
-      display: flex;
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 140px;
+      gap: 40px;
       align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
+      margin-bottom: 100px;
     }
 
-    .header img {
+    .hero h1 {
+      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      margin: 0;
+      line-height: 1;
+      font-weight: 900;
+      background: linear-gradient(90deg, #2563eb, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin-top: 15px;
+      font-size: 1.15rem;
+      max-width: 550px;
+      color: #4b5563;
+    }
+
+    .hero img {
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      border: 4px solid #2563eb;
-      box-shadow: 0 8px 20px rgba(37,99,235,0.4);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      border: 5px solid white;
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
+      transition: transform .5s ease;
     }
 
-    .header img:hover {
-      transform: scale(1.15) rotate(-5deg);
-      box-shadow: 0 20px 35px rgba(37,99,235,0.6);
+    .hero img:hover {
+      transform: rotate(-6deg) scale(1.1);
     }
 
-    .header-text {
-      flex: 1;
-      min-width: 250px;
+    section {
+      margin-bottom: 100px;
     }
 
-    h1 {
-      font-size: 3rem;
-      margin: 0;
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: #6b7280;
-      margin-top: 5px;
-      font-style: italic;
-    }
-
-    /* Bio */
-    .bio {
-      margin: 30px 0;
-      font-size: 1.05rem;
-      color: #374151;
-      max-width: 800px;
-      background: #fff;
-      padding: 20px 25px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .bio:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 35px rgba(0,0,0,0.15);
-    }
-
-    /* Section Titles */
     section h2 {
-      margin-bottom: 25px;
-      font-size: 2rem;
+      font-size: 2.3rem;
+      margin-bottom: 35px;
       background: linear-gradient(90deg, #2563eb, #9333ea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      position: relative;
     }
 
-    /* Creative Card Layout */
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-      justify-content: space-between;
+    /* STORY CARD */
+    .story {
+      background: rgba(255,255,255,0.85);
+      border-radius: 24px;
+      padding: 35px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.1);
+      font-size: 1.05rem;
+      line-height: 1.7;
+      transition: transform .4s ease;
+    }
+
+    .story:hover {
+      transform: translateY(-6px);
+    }
+
+    /* GRID CARDS */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 28px;
     }
 
     .card {
-      background: linear-gradient(145deg, #ffffff, #f0f9ff);
-      padding: 20px 20px;
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      flex: 1 1 45%;
-      min-width: 280px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 25px rgba(0,0,0,.1);
+      transition: transform .35s ease, box-shadow .35s ease;
       position: relative;
       overflow: hidden;
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .card::before {
-      content: '★';
+    .card::after {
+      content: "";
       position: absolute;
-      top: -10px;
-      right: -10px;
-      font-size: 3rem;
-      color: rgba(37,99,235,0.15);
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(147,51,234,.1));
+      opacity: 0;
+      transition: opacity .35s;
+    }
+
+    .card:hover::after {
+      opacity: 1;
     }
 
     .card:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 18px 38px rgba(0,0,0,0.18);
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 45px rgba(0,0,0,.18);
     }
 
     .card strong {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       display: block;
       margin-bottom: 10px;
-      color: #111827;
     }
 
     ul {
-      padding-left: 20px;
+      padding-left: 18px;
       margin: 8px 0;
     }
 
-    .skills {
-      margin-top: 10px;
-      font-weight: 600;
-      color: #2563eb;
-    }
-
-    /* Hobbies */
-    .hobbies {
+    /* HOBBIES */
+    .tags {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 12px;
     }
 
-    .hobby {
-      background: linear-gradient(135deg, #93c5fd, #a78bfa);
-      padding: 6px 14px;
-      border-radius: 16px;
-      font-size: 0.95rem;
-      color: white;
+    .tag {
+      padding: 8px 16px;
+      border-radius: 20px;
       font-weight: 600;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
+      color: white;
+      background: linear-gradient(135deg,#2563eb,#9333ea);
+      transition: transform .3s ease;
     }
 
-    .hobby:hover {
-      transform: translateY(-5px) scale(1.08);
-      box-shadow: 0 12px 25px rgba(37,99,235,0.4);
+    .tag:hover {
+      transform: translateY(-4px) scale(1.05);
     }
 
-    /* Contact */
+    /* CONTACT */
     .contact {
-      font-size: 1.05rem;
-      color: #374151;
+      font-size: 1.1rem;
       display: flex;
-      gap: 20px;
-      align-items: center;
+      gap: 25px;
       flex-wrap: wrap;
     }
 
     .contact a {
       font-weight: 600;
+      color: #2563eb;
+      text-decoration: none;
     }
 
-    /* Footer */
-    .footer {
-      margin-top: 60px;
+    .contact a:hover {
+      color: #9333ea;
+    }
+
+    footer {
       text-align: center;
       color: #6b7280;
-      font-size: 0.9rem;
+      margin-top: 100px;
+      font-size: .9rem;
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
 
-    <!-- Header -->
-    <div class="header">
-      <img src="https://www.dreamstime.com/cute-black-cat-cartoon-violet-image377360108" alt="Haram Yoo Profile Photo">
-      <div class="header-text">
-        <h1>Haram Yoo</h1>
-        <div class="subtitle">Undergraduate Informatics Student @ University of Washington</div>
-      </div>
+<div class="gradient-orb"></div>
+
+<div class="container">
+
+  <section class="hero">
+    <div>
+      <h1>Haram Yoo</h1>
+      <p>
+        Undergraduate Informatics student at the University of Washington.<br>
+        Curious about how data, design, and technology shape human experience.
+      </p>
     </div>
 
-    <!-- Bio -->
-    <div class="bio">
-      I am an undergraduate student at the University of Washington, intending to major in Informatics.<br>
-      I am interested in how data and technology can enhance learning experiences.<br>
-      I enjoy solving problems, building projects, and continuously developing new technical skills.<br> 
-      My interest in Data Science began just before starting college,<br>
-      and while I am still early in gaining hands-on experience,<br>
-      I am eager to learn, grow, and contribute to projects in this field! 💌
+    <!-- KEEP YOUR PROFILE PHOTO -->
+    <img src="https://www.dreamstime.com/cute-black-cat-cartoon-violet-image377360108" alt="Profile Photo">
+  </section>
+
+  <section>
+    <h2>My Story</h2>
+    <div class="story">
+      My interest in data science began unexpectedly when I took AP Computer Science A in high school without a specific goal in mind. 
+      As I learned how to think logically, debug problems, and slowly build working solutions, I discovered how satisfying problem-solving could be.
+      <br><br>
+      This curiosity led me to explore informatics and data science, where technology meets human-centered design. I became fascinated by how data can 
+      reveal patterns in behavior, improve systems, and create meaningful impact in education and society. I am still early in my journey, but I am deeply motivated to 
+      learn, grow, and build tools that help people.
     </div>
+  </section>
 
-    <!-- Hobbies -->
-    <section id="hobbies">
-      <h2>Hobbies</h2>
-      <div class="hobbies">
-        <div class="hobby">Piano</div>
-        <div class="hobby">K-drama</div>
-        <div class="hobby">Photography</div>
-        <div class="hobby">Traveling</div>
-        <div class="hobby">Reading</div>
+  <section>
+    <h2>Projects</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>Java Programming Projects</strong>
+        <ul>
+          <li>Built object-oriented simulations and mini-games</li>
+          <li>Focused on abstraction, inheritance, debugging, and clean design</li>
+        </ul>
       </div>
-    </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <h2>Projects</h2>
-      <div class="cards">
-        <div class="card">
-          <strong>Java Programming Projects</strong>
-          <ul>
-            <li>Built object-oriented Java programs including simulations and simple games</li>
-            <li>Focused on abstraction, inheritance, debugging, and clean code design</li>
-          </ul>
-          <div class="skills">Skills: Java, OOP, Debugging</div>
-        </div>
-
-        <div class="card">
-          <strong>Django Web Application (In Progress)</strong>
-          <ul>
-            <li>Contributed to backend logic and feature testing</li>
-            <li>Supported debugging and documentation</li>
-          </ul>
-          <div class="skills">Skills: Python, Django, Backend Development</div>
-        </div>
+      <div class="card">
+        <strong>Django Web Application</strong>
+        <ul>
+          <li>Contributed to backend logic, debugging, and feature testing</li>
+          <li>Collaborated on documentation and architecture</li>
+        </ul>
       </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="cards">
-        <div class="card">
-          <strong>Marketing Team - Leadership Member</strong> — Korean Student Union, University of Washington (Sept 2025–2028), Seattle, WA
-          <ul>
-            <li>Created videos and reels to increase student engagement and event attendance</li>
-            <li>Managed the organization's Instagram and YouTube accounts</li>
-            <li>Collaborated with student organizations across UW to support shared programs and events</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju (Jan 2025–Jun 2025), Jeju, South Korea
-          <ul>
-            <li>Assisted teachers in preparing instructional materials and organizing computer science events</li>
-            <li>Supported students with hands-on technical support for devices and AP Computer Science A assignments</li>
-            <li>Monitored student progress and provided feedback to enhance learning experiences</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <strong>Webmaster</strong> — Computer Science Honor Society, St. Johnsbury Academy Jeju (Aug 2024–Jun 2025)
-          <ul>
-            <li>Built and maintained the first CS Honor Society website using HTML/CSS</li>
-            <li>Collaborated with faculty to design and update content</li>
-            <li>Organized digital content and supported students' onboarding</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <strong>Social Media Department Leader</strong> — Sports Council, St. Johnsbury Academy Jeju (Aug 2023–Jun 2025)
-          <ul>
-            <li>Managed and promoted the school's official Athletic Instagram account</li>
-            <li>Led weekly departmental meetings, tracked tasks and deadlines</li>
-            <li>Published game schedules, match results, and highlights</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <strong>Girls Varsity Basketball Team Captain</strong> — St. Johnsbury Academy Jeju (Oct 2023–Mar 2025)
-          <ul>
-            <li>Led team practices and organized training schedules</li>
-            <li>Communicated between coaches and players</li>
-            <li>Represented team at school and community events</li>
-            <li>Analyzed opponents’ strengths and weaknesses to create game strategies</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education & Awards -->
-    <section id="education">
-      <h2>Education & Awards</h2>
-      <div class="cards">
-        <div class="card">
-          <strong>Bachelor of Science in Informatics: Data Science (Intended)</strong> — University of Washington, Seattle, WA
-          <ul>
-            <li>Completed: CSE 122</li>
-            <li>In Progress: CSE 123, INFO 200</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <strong>High School Diploma</strong> — St. Johnsbury Academy Jeju, South Korea, June 2025
-          <ul>
-            <li>Grace Hopper Computer Science Award (2024) – Recipient</li>
-            <li>Runner-up, Human Rights and Peace Student Presentation Competition (2024)</li>
-            <li>Earth Network Youth Award, WAE ESG (2024)</li>
-            <li>KISAC High School Girls Basketball All Tournament Award (2025)</li>
-            <li>High School Girls Basketball MVP</li>
-            <li>KISAC High School Girls Swimming Champion (2022), Third Place (2023)</li>
-            <li>Third-Place, Jeju International Tournament Girls Basketball (2024)</li>
-            <li>Third-Place, KISAC Girls Basketball (2025)</li>
-            <li>Exchange Student, St. Johnsbury Academy, Vermont (2023)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact</h2>
-      <div class="contact">
-        📧 <a href="mailto:haramy00@uw.edu">haramy00@uw.edu</a> &nbsp; | &nbsp; 📞 206-251-0562
-      </div>
-    </section>
-
-    <div class="footer">
-      © 2026 Haram Yoo
     </div>
+  </section>
 
-  </div>
+  <section>
+    <h2>Leadership & Experience</h2>
+    <div class="grid">
+
+      <div class="card">
+        <strong>Korean Student Union — Marketing Team Lead</strong>
+        <ul>
+          <li>Designed media campaigns to increase student engagement</li>
+          <li>Managed social platforms and analytics</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>IT Teaching Assistant</strong>
+        <ul>
+          <li>Supported CS coursework and AP Computer Science students</li>
+          <li>Provided hands-on technical support and tutoring</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>Webmaster — CS Honor Society</strong>
+        <ul>
+          <li>Designed and launched first official chapter website</li>
+          <li>Maintained UX and site structure</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <strong>Girls Varsity Basketball Team Captain</strong>
+        <ul>
+          <li>Led practices, communication, and team coordination</li>
+          <li>Developed strategic planning and leadership skills</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Outside of Code</h2>
+    <div class="tags">
+      <div class="tag">🎹 Piano</div>
+      <div class="tag">📸 Photography</div>
+      <div class="tag">✈️ Travel</div>
+      <div class="tag">📚 Reading</div>
+      <div class="tag">🎬 K-Drama</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Contact</h2>
+    <div class="contact">
+      📧 <a href="mailto:haramy00@uw.edu">haramy00@uw.edu</a>
+      📞 206-251-0562
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Haram Yoo
+  </footer>
+
+</div>
+
 </body>
 </html>
