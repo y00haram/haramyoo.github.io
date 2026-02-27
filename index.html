@@ -5,311 +5,177 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haram Yoo ✨</title>
 
-  <!-- Fun + Readable Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: 'Space Grotesk', sans-serif;
-      background: linear-gradient(135deg, #fdfbff, #e8f8ff, #ffffff);
-      color: #1f2937;
-      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(120deg, #fdfbfb, #ebedee);
+      color: #222;
     }
 
-    .glow {
-      position: fixed;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(147,51,234,0.18), transparent 60%);
-      filter: blur(80px);
-      z-index: -1;
-      animation: float 18s infinite alternate ease-in-out;
-    }
-
-    @keyframes float {
-      from { transform: translate(-50px, -30px); }
-      to { transform: translate(60px, 40px); }
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 70px 20px;
-    }
-
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 140px;
-      gap: 40px;
-      align-items: center;
-      margin-bottom: 100px;
-    }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
-      margin: 0;
-      line-height: 1;
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -1px;
-    }
-
-    .hero p {
-      margin-top: 15px;
-      font-size: 1.15rem;
-      max-width: 550px;
-      color: #4b5563;
-    }
-
-    .hero img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 5px solid white;
-      box-shadow: 0 12px 30px rgba(0,0,0,.2);
-      transition: all .5s ease;
-    }
-
-    .hero img:hover {
-      transform: rotate(-6deg) scale(1.12);
-      box-shadow: 0 18px 45px rgba(147,51,234,.45);
+    h1, h2 {
+      font-family: 'Pacifico', cursive;
+      letter-spacing: 1px;
     }
 
     section {
-      margin-bottom: 100px;
+      padding: 80px 12%;
     }
 
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-bottom: 35px;
-      background: linear-gradient(90deg, #2563eb, #9333ea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      color: #111;
     }
 
-    /* STORY */
-    .story {
-      background: rgba(255,255,255,0.9);
-      border-radius: 28px;
-      padding: 35px 40px;
-      box-shadow: 0 12px 35px rgba(0,0,0,.12);
-      font-size: 1.05rem;
-      line-height: 1.75;
-      transition: all .4s ease;
+    .hero h1 {
+      font-size: 3.8rem;
+      margin-bottom: 10px;
     }
 
-    .story:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 20px 50px rgba(0,0,0,.18);
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      margin: auto;
     }
 
-    /* GRID */
+    .highlight {
+      font-weight: 600;
+      color: #6a00ff;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.75);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    .box:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
     }
 
-    .card {
-      background: rgba(255,255,255,0.92);
-      border-radius: 26px;
-      padding: 26px 28px;
-      box-shadow: 0 12px 30px rgba(0,0,0,.1);
-      transition: all .35s ease;
+    .story {
+      font-size: 1.15rem;
+      line-height: 1.9;
+    }
+
+    .love-grid .box {
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .project-card {
       position: relative;
       overflow: hidden;
     }
 
-    .card:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 28px 55px rgba(147,51,234,.25);
+    .project-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,0.7), rgba(255,255,255,0));
+      transform: translateX(-100%);
+      transition: 0.6s;
     }
 
-    .card strong {
-      font-size: 1.1rem;
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 18px;
-      margin: 8px 0;
-    }
-
-    /* TAGS */
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .tag {
-      padding: 9px 18px;
-      border-radius: 22px;
-      font-weight: 600;
-      color: white;
-      background: linear-gradient(135deg,#2563eb,#9333ea);
-      transition: all .3s ease;
-      cursor: default;
-    }
-
-    .tag:hover {
-      transform: translateY(-5px) scale(1.08);
-      box-shadow: 0 12px 30px rgba(147,51,234,.4);
-    }
-
-    /* CONTACT */
-    .contact {
-      font-size: 1.15rem;
-      display: flex;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .contact a {
-      font-weight: 600;
-      color: #2563eb;
-      text-decoration: none;
-    }
-
-    .contact a:hover {
-      color: #9333ea;
+    .project-card:hover::after {
+      transform: translateX(100%);
     }
 
     footer {
       text-align: center;
-      color: #6b7280;
-      margin-top: 100px;
-      font-size: .9rem;
+      padding: 30px;
+      opacity: 0.6;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
-
-<div class="container">
-
+  <!-- HERO -->
   <section class="hero">
     <div>
-      <h1>Haram Yoo ✨</h1>
-      <p>
-        UW Informatics student 🌱 · aspiring data scientist 📊 · human before everything 💖
+      <h1>Hi, I’m Haram ✨</h1>
+      <p>Curious mind 🧠 | Dreamer 💭 | Beginner programmer 💻 | Data lover 📊</p>
+      <p>I was born on <span class="highlight">October 14, 2007 🎂</span></p>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section>
+    <div class="box">
+      <h2>My Story 🌱</h2>
+      <p class="story">
+        Honestly, I didn’t start coding because I had some big dream or deep plan. I randomly took AP Computer Science A in high school… just because 😅  
+        And somehow, I ended up loving it. There was something really satisfying about solving problems, breaking things, fixing them, and watching my ideas slowly turn into real things on the screen.
+        <br><br>
+        That curiosity pushed me to explore more, and that’s when I discovered informatics and data science — the perfect mix of humans 🤍 and technology 🤖. I became fascinated by how data can tell stories, explain behavior, and help people make better decisions.
+        <br><br>
+        I’m still learning, still messing up, still Googling simple things every day — but I genuinely enjoy the process. I love growing, challenging myself, and seeing how far curiosity alone can take me 🚀
       </p>
     </div>
-
-    <!-- KEEP YOUR PROFILE PHOTO -->
-    <img src="https://www.dreamstime.com/cute-black-cat-cartoon-violet-image377360108" alt="Profile Photo">
   </section>
 
+  <!-- LITTLE THINGS I LOVE -->
   <section>
-    <h2>🌷 My Story</h2>
-    <div class="story">
-      Hi! I’m Haram 💫 I was born on <strong>October 14, 2007 🎂</strong>, and I’m currently an undergraduate student at the University of Washington.  
-
-      <br><br>
-      I first got interested in tech just by randomly signing up for AP Computer Science A in high school (no deep reason at all 😭). But surprisingly, I ended up loving it. I enjoyed breaking down problems, debugging for hours, and finally seeing my code work — it felt like solving tiny puzzles all day 🧩  
-
-      <br><br>
-      That curiosity naturally led me to informatics and data science, where technology meets people, creativity, and real-world impact 🌍 I’m especially fascinated by how data can reveal stories about human behavior, learning, and decision-making.  
-
-      <br><br>
-      I’m still very early in my journey, but I’m extremely motivated to learn, grow, fail, improve, and build things that actually help people. I take opportunities seriously, care deeply about doing meaningful work, and always try to bring kindness, responsibility, and curiosity wherever I go 💌
+    <h2>Little Things I Love 💕</h2>
+    <div class="grid love-grid">
+      <div class="box">☕ Iced coffee at 2am</div>
+      <div class="box">🎧 Coding with music blasting</div>
+      <div class="box">🌙 Late night motivation</div>
+      <div class="box">📸 Taking random photos</div>
+      <div class="box">🍰 Cute desserts</div>
+      <div class="box">🐶 Dogs >>> humans</div>
     </div>
   </section>
 
+  <!-- PROJECTS -->
   <section>
-    <h2>🚀 Projects</h2>
+    <h2>Projects 🚀</h2>
     <div class="grid">
-      <div class="card">
-        <strong>Java Programming Projects ☕</strong>
-        <ul>
-          <li>Built simulations & mini-games</li>
-          <li>Focused on abstraction, OOP & debugging</li>
-        </ul>
+      <div class="box project-card">
+        <h3>Relief Allocation Simulator 🌍</h3>
+        <p>Designed algorithms that distribute disaster relief resources fairly using Java & testing frameworks.</p>
       </div>
 
-      <div class="card">
-        <strong>Django Web Application 🌐</strong>
-        <ul>
-          <li>Backend logic & feature testing</li>
-          <li>Debugging & documentation</li>
-        </ul>
+      <div class="box project-card">
+        <h3>Java Game Engine 🎮</h3>
+        <p>Built abstract game logic systems using inheritance and clean OOP structure.</p>
+      </div>
+
+      <div class="box project-card">
+        <h3>Personal Portfolio Website ✨</h3>
+        <p>This website! Designed with pure HTML + CSS and lots of love.</p>
       </div>
     </div>
   </section>
 
-  <section>
-    <h2>🌈 Leadership & Experience</h2>
-    <div class="grid">
-
-      <div class="card">
-        <strong>Korean Student Union — Marketing Team 🎨</strong>
-        <ul>
-          <li>Designed content to boost student engagement</li>
-          <li>Managed Instagram & YouTube</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>IT Teaching Assistant 💻</strong>
-        <ul>
-          <li>Supported AP CS students</li>
-          <li>Provided technical troubleshooting</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>Webmaster — CS Honor Society 🕸</strong>
-        <ul>
-          <li>Built & maintained chapter website</li>
-          <li>Designed site structure & UX</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <strong>Basketball Team Captain 🏀</strong>
-        <ul>
-          <li>Led training & team coordination</li>
-          <li>Built leadership & communication skills</li>
-        </ul>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <h2>🎀 Little Things I Love</h2>
-    <div class="tags">
-      <div class="tag">🎹 Piano</div>
-      <div class="tag">📸 Photography</div>
-      <div class="tag">✈️ Traveling</div>
-      <div class="tag">📚 Reading</div>
-      <div class="tag">🎬 K-Drama</div>
-    </div>
-  </section>
-
-  <section>
-    <h2>💌 Contact Me</h2>
-    <div class="contact">
-      📧 <a href="mailto:haramy00@uw.edu">haramy00@uw.edu</a>
-      📞 206-251-0562
-    </div>
-  </section>
-
+  <!-- FOOTER -->
   <footer>
-    Made with 💜 by Haram · 2026
+    Made with 💖 + ☕ + sleepless nights — Haram Yoo
   </footer>
-
-</div>
 
 </body>
 </html>
