@@ -5,14 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Haram Yoo ✨</title>
 
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -21,13 +17,27 @@
       color: #222;
     }
 
-    h1, h2 {
-      font-family: 'Pacifico', cursive;
-      letter-spacing: 1px;
+    h1, h2 { font-family: 'Pacifico', cursive; }
+
+    section { padding: 80px 12%; }
+
+    .dev-banner {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(0,0,0,.15);
+      z-index: 999;
+      animation: float 3s ease-in-out infinite;
     }
 
-    section {
-      padding: 80px 12%;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
     }
 
     .hero {
@@ -37,36 +47,27 @@
       justify-content: center;
       text-align: center;
       background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-      color: #111;
     }
 
-    .hero h1 {
-      font-size: 3.8rem;
-      margin-bottom: 10px;
-    }
+    .hero h1 { font-size: 3.8rem; margin-bottom: 10px; }
 
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 600px;
-      margin: auto;
-    }
+    .hero p { font-size: 1.3rem; }
 
-    .highlight {
-      font-weight: 600;
-      color: #6a00ff;
-    }
+    .highlight { font-weight: 600; color: #6a00ff; }
 
     .box {
-      background: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.9);
       border-radius: 20px;
       padding: 30px;
       box-shadow: 0 15px 30px rgba(0,0,0,0.08);
-      transition: all 0.35s cubic-bezier(.4,0,.2,1);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      cursor: pointer;
+      will-change: transform;
     }
 
     .box:hover {
-      transform: translateY(-12px) scale(1.03);
-      box-shadow: 0 25px 45px rgba(0,0,0,0.15);
+      transform: translateY(-14px) scale(1.04);
+      box-shadow: 0 25px 50px rgba(0,0,0,0.18);
     }
 
     .grid {
@@ -75,44 +76,41 @@
       gap: 25px;
     }
 
-    .story {
-      font-size: 1.15rem;
-      line-height: 1.9;
-    }
+    .story { font-size: 1.15rem; line-height: 1.9; }
 
-    .love-grid .box {
+    .baby {
+      background: linear-gradient(135deg, #fff1eb, #ace0f9);
       text-align: center;
-      font-size: 1.1rem;
+      border-radius: 25px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.1);
     }
 
-    .project-card {
-      position: relative;
-      overflow: hidden;
+    .baby img {
+      width: 180px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      border: 5px solid white;
+      box-shadow: 0 10px 25px rgba(0,0,0,.15);
+      transition: transform .4s ease;
     }
 
-    .project-card::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,0.7), rgba(255,255,255,0));
-      transform: translateX(-100%);
-      transition: 0.6s;
-    }
-
-    .project-card:hover::after {
-      transform: translateX(100%);
+    .baby img:hover {
+      transform: rotate(-6deg) scale(1.1);
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      opacity: 0.6;
-      font-size: 0.9rem;
+      opacity: .6;
+      font-size: .9rem;
     }
   </style>
 </head>
 
 <body>
+
+  <div class="dev-banner">🚧 Still under development</div>
 
   <!-- HERO -->
   <section class="hero">
@@ -123,31 +121,44 @@
     </div>
   </section>
 
-  <!-- ABOUT ME -->
+  <!-- STORY -->
   <section>
     <div class="box">
       <h2>My Story 🌱</h2>
       <p class="story">
-        Honestly, I didn’t start coding because I had some big dream or deep plan. I randomly took AP Computer Science A in high school… just because 😅  
-        And somehow, I ended up loving it. There was something really satisfying about solving problems, breaking things, fixing them, and watching my ideas slowly turn into real things on the screen.
+        I honestly started coding by accident 😅 I randomly took AP Computer Science A in high school with zero expectations — and somehow ended up loving it.
+        I liked breaking things, fixing them, and slowly watching my ideas turn into something real on my screen.
         <br><br>
-        That curiosity pushed me to explore more, and that’s when I discovered informatics and data science — the perfect mix of humans 🤍 and technology 🤖. I became fascinated by how data can tell stories, explain behavior, and help people make better decisions.
+        That curiosity led me to discover informatics and data science, which felt like the perfect mix of humans 🤍 + technology 🤖.
         <br><br>
-        I’m still learning, still messing up, still Googling simple things every day — but I genuinely enjoy the process. I love growing, challenging myself, and seeing how far curiosity alone can take me 🚀
+        I’m still learning, still struggling, still googling simple things daily — but I genuinely enjoy the journey 🚀
       </p>
     </div>
   </section>
 
-  <!-- LITTLE THINGS I LOVE -->
+  <!-- BABY ME -->
+  <section>
+    <div class="baby">
+      <h2>Baby Me 👶</h2>
+      <img src="images/baby.jpg" alt="Baby Haram">
+      <p>
+        Just a tiny human with big dreams 🍼✨  
+        <br>
+        Still curious. Still dreaming. Just taller now 😆
+      </p>
+    </div>
+  </section>
+
+  <!-- LITTLE THINGS -->
   <section>
     <h2>Little Things I Love 💕</h2>
-    <div class="grid love-grid">
-      <div class="box">☕ Iced coffee at 2am</div>
-      <div class="box">🎧 Coding with music blasting</div>
-      <div class="box">🌙 Late night motivation</div>
-      <div class="box">📸 Taking random photos</div>
-      <div class="box">🍰 Cute desserts</div>
-      <div class="box">🐶 Dogs >>> humans</div>
+    <div class="grid">
+      <div class="box">☕ Iced coffee</div>
+      <div class="box">🎧 Music + coding</div>
+      <div class="box">🌙 Late nights</div>
+      <div class="box">📸 Random photos</div>
+      <div class="box">🍰 Desserts</div>
+      <div class="box">🐶 Dogs</div>
     </div>
   </section>
 
@@ -155,26 +166,14 @@
   <section>
     <h2>Projects 🚀</h2>
     <div class="grid">
-      <div class="box project-card">
-        <h3>Relief Allocation Simulator 🌍</h3>
-        <p>Designed algorithms that distribute disaster relief resources fairly using Java & testing frameworks.</p>
-      </div>
-
-      <div class="box project-card">
-        <h3>Java Game Engine 🎮</h3>
-        <p>Built abstract game logic systems using inheritance and clean OOP structure.</p>
-      </div>
-
-      <div class="box project-card">
-        <h3>Personal Portfolio Website ✨</h3>
-        <p>This website! Designed with pure HTML + CSS and lots of love.</p>
-      </div>
+      <div class="box">🌍 Relief Allocation Simulator</div>
+      <div class="box">🎮 Java Game Engine</div>
+      <div class="box">✨ Interactive Portfolio</div>
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
-    Made with 💖 + ☕ + sleepless nights — Haram Yoo
+    Made with 💖 + ☕ + curiosity — Haram Yoo
   </footer>
 
 </body>
