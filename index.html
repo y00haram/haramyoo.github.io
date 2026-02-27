@@ -10,13 +10,13 @@
 
   <style>
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: linear-gradient(160deg, #f9fafb, #e0f2fe);
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(150deg, #fef9ff, #e0f7fa);
       margin: 0;
       padding: 0;
       color: #1f2937;
       line-height: 1.6;
-      transition: background 0.5s ease;
+      overflow-x: hidden;
     }
 
     a {
@@ -32,7 +32,7 @@
     }
 
     .container {
-      max-width: 950px;
+      max-width: 1000px;
       margin: auto;
       padding: 40px 20px;
     }
@@ -41,24 +41,28 @@
     .header {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 20px;
+      flex-wrap: wrap;
       margin-bottom: 40px;
-      position: relative;
     }
 
     .header img {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      object-fit: cover;
       border: 4px solid #2563eb;
-      box-shadow: 0 6px 15px rgba(37,99,235,0.3);
+      box-shadow: 0 8px 20px rgba(37,99,235,0.4);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
     }
 
     .header img:hover {
-      transform: scale(1.12) rotate(-3deg);
-      box-shadow: 0 16px 30px rgba(37,99,235,0.5);
+      transform: scale(1.15) rotate(-5deg);
+      box-shadow: 0 20px 35px rgba(37,99,235,0.6);
+    }
+
+    .header-text {
+      flex: 1;
+      min-width: 250px;
     }
 
     h1 {
@@ -76,58 +80,75 @@
       font-style: italic;
     }
 
-    p {
+    /* Bio */
+    .bio {
+      margin: 30px 0;
       font-size: 1.05rem;
       color: #374151;
+      max-width: 800px;
+      background: #fff;
+      padding: 20px 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    section {
-      margin-top: 60px;
+    .bio:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.15);
     }
 
+    /* Section Titles */
     section h2 {
       margin-bottom: 25px;
-      font-size: 1.9rem;
+      font-size: 2rem;
       background: linear-gradient(90deg, #2563eb, #9333ea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 6px;
       position: relative;
     }
 
-    /* Cards */
+    /* Creative Card Layout */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      justify-content: space-between;
+    }
+
     .card {
-      background: #ffffff;
-      padding: 25px 25px;
-      border-radius: 18px;
-      margin-top: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.07);
-      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      background: linear-gradient(145deg, #ffffff, #f0f9ff);
+      padding: 20px 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      flex: 1 1 45%;
+      min-width: 280px;
       position: relative;
       overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .card::before {
+      content: '★';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 3rem;
+      color: rgba(37,99,235,0.15);
     }
 
     .card:hover {
-      transform: translateY(-12px) scale(1.01);
-      box-shadow: 0 18px 35px rgba(0,0,0,0.18);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 18px 38px rgba(0,0,0,0.18);
     }
 
-    .card::after {
-      content: '';
-      position: absolute;
-      top: -60%;
-      left: -60%;
-      width: 220%;
-      height: 220%;
-      background: radial-gradient(circle, rgba(37,99,235,0.12), transparent 70%);
-      transform: rotate(45deg);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-
-    .card:hover::after {
-      opacity: 1;
+    .card strong {
+      font-size: 1.15rem;
+      display: block;
+      margin-bottom: 10px;
+      color: #111827;
     }
 
     ul {
@@ -136,7 +157,7 @@
     }
 
     .skills {
-      margin-top: 8px;
+      margin-top: 10px;
       font-weight: 600;
       color: #2563eb;
     }
@@ -152,7 +173,7 @@
     .hobby {
       background: linear-gradient(135deg, #93c5fd, #a78bfa);
       padding: 6px 14px;
-      border-radius: 14px;
+      border-radius: 16px;
       font-size: 0.95rem;
       color: white;
       font-weight: 600;
@@ -161,8 +182,8 @@
     }
 
     .hobby:hover {
-      transform: translateY(-4px) scale(1.06);
-      box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+      transform: translateY(-5px) scale(1.08);
+      box-shadow: 0 12px 25px rgba(37,99,235,0.4);
     }
 
     /* Contact */
@@ -175,18 +196,8 @@
       flex-wrap: wrap;
     }
 
-    /* Decorative Images */
-    .decorative-img {
-      width: 100%;
-      max-height: 250px;
-      object-fit: cover;
-      border-radius: 14px;
-      margin-top: 20px;
-      transition: transform 0.5s ease;
-    }
-
-    .decorative-img:hover {
-      transform: scale(1.04);
+    .contact a {
+      font-weight: 600;
     }
 
     /* Footer */
@@ -205,18 +216,18 @@
     <!-- Header -->
     <div class="header">
       <img src="https://www.dreamstime.com/cute-black-cat-cartoon-violet-image377360108" alt="Haram Yoo Profile Photo">
-      <div>
+      <div class="header-text">
         <h1>Haram Yoo</h1>
         <div class="subtitle">Undergraduate Informatics Student @ University of Washington</div>
       </div>
     </div>
 
     <!-- Bio -->
-    <p>
+    <div class="bio">
       I am an undergraduate student at the University of Washington, intending to major in Informatics (Data Science). 
       I enjoy drawing insights from data, building projects, and developing new technical skills. 
       I am eager to contribute to hands-on projects in data science, analytics, and enhancing student experiences.
-    </p>
+    </div>
 
     <!-- Hobbies -->
     <section id="hobbies">
@@ -233,99 +244,105 @@
     <!-- Projects -->
     <section id="projects">
       <h2>Projects</h2>
-      <div class="card">
-        <strong>Java Programming Projects</strong>
-        <ul>
-          <li>Built object-oriented Java programs including simulations and simple games</li>
-          <li>Focused on abstraction, inheritance, debugging, and clean code design</li>
-        </ul>
-        <div class="skills">Skills: Java, OOP, Debugging</div>
-      </div>
+      <div class="cards">
+        <div class="card">
+          <strong>Java Programming Projects</strong>
+          <ul>
+            <li>Built object-oriented Java programs including simulations and simple games</li>
+            <li>Focused on abstraction, inheritance, debugging, and clean code design</li>
+          </ul>
+          <div class="skills">Skills: Java, OOP, Debugging</div>
+        </div>
 
-      <div class="card">
-        <strong>Django Web Application (In Progress)</strong>
-        <ul>
-          <li>Contributed to backend logic and feature testing</li>
-          <li>Supported debugging and documentation</li>
-        </ul>
-        <div class="skills">Skills: Python, Django, Backend Development</div>
+        <div class="card">
+          <strong>Django Web Application (In Progress)</strong>
+          <ul>
+            <li>Contributed to backend logic and feature testing</li>
+            <li>Supported debugging and documentation</li>
+          </ul>
+          <div class="skills">Skills: Python, Django, Backend Development</div>
+        </div>
       </div>
     </section>
 
     <!-- Experience -->
     <section id="experience">
       <h2>Experience</h2>
-      <div class="card">
-        <strong>Marketing Team - Leadership Member</strong> — Korean Student Union, University of Washington (Sept 2025–2028), Seattle, WA
-        <ul>
-          <li>Created videos and reels to increase student engagement and event attendance</li>
-          <li>Managed the organization's Instagram and YouTube accounts</li>
-          <li>Collaborated with student organizations across UW to support shared programs and events</li>
-        </ul>
-      </div>
+      <div class="cards">
+        <div class="card">
+          <strong>Marketing Team - Leadership Member</strong> — Korean Student Union, University of Washington (Sept 2025–2028), Seattle, WA
+          <ul>
+            <li>Created videos and reels to increase student engagement and event attendance</li>
+            <li>Managed the organization's Instagram and YouTube accounts</li>
+            <li>Collaborated with student organizations across UW to support shared programs and events</li>
+          </ul>
+        </div>
 
-      <div class="card">
-        <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju (Jan 2025–Jun 2025), Jeju, South Korea
-        <ul>
-          <li>Assisted teachers in preparing instructional materials and organizing computer science events</li>
-          <li>Supported students with hands-on technical support for devices and AP Computer Science A assignments</li>
-          <li>Monitored student progress and provided feedback to enhance learning experiences</li>
-        </ul>
-      </div>
+        <div class="card">
+          <strong>IT Teaching Assistant</strong> — St. Johnsbury Academy Jeju (Jan 2025–Jun 2025), Jeju, South Korea
+          <ul>
+            <li>Assisted teachers in preparing instructional materials and organizing computer science events</li>
+            <li>Supported students with hands-on technical support for devices and AP Computer Science A assignments</li>
+            <li>Monitored student progress and provided feedback to enhance learning experiences</li>
+          </ul>
+        </div>
 
-      <div class="card">
-        <strong>Webmaster</strong> — Computer Science Honor Society, St. Johnsbury Academy Jeju (Aug 2024–Jun 2025)
-        <ul>
-          <li>Built and maintained the first CS Honor Society website using HTML/CSS</li>
-          <li>Collaborated with faculty to design and update content</li>
-          <li>Organized digital content and supported students' onboarding</li>
-        </ul>
-      </div>
+        <div class="card">
+          <strong>Webmaster</strong> — Computer Science Honor Society, St. Johnsbury Academy Jeju (Aug 2024–Jun 2025)
+          <ul>
+            <li>Built and maintained the first CS Honor Society website using HTML/CSS</li>
+            <li>Collaborated with faculty to design and update content</li>
+            <li>Organized digital content and supported students' onboarding</li>
+          </ul>
+        </div>
 
-      <div class="card">
-        <strong>Social Media Department Leader</strong> — Sports Council, St. Johnsbury Academy Jeju (Aug 2023–Jun 2025)
-        <ul>
-          <li>Managed and promoted the school's official Athletic Instagram account</li>
-          <li>Led weekly departmental meetings, tracked tasks and deadlines</li>
-          <li>Published game schedules, match results, and highlights</li>
-        </ul>
-      </div>
+        <div class="card">
+          <strong>Social Media Department Leader</strong> — Sports Council, St. Johnsbury Academy Jeju (Aug 2023–Jun 2025)
+          <ul>
+            <li>Managed and promoted the school's official Athletic Instagram account</li>
+            <li>Led weekly departmental meetings, tracked tasks and deadlines</li>
+            <li>Published game schedules, match results, and highlights</li>
+          </ul>
+        </div>
 
-      <div class="card">
-        <strong>Girls Varsity Basketball Team Captain</strong> — St. Johnsbury Academy Jeju (Oct 2023–Mar 2025)
-        <ul>
-          <li>Led team practices and organized training schedules</li>
-          <li>Communicated between coaches and players</li>
-          <li>Represented team at school and community events</li>
-          <li>Analyzed opponents’ strengths and weaknesses to create game strategies</li>
-        </ul>
+        <div class="card">
+          <strong>Girls Varsity Basketball Team Captain</strong> — St. Johnsbury Academy Jeju (Oct 2023–Mar 2025)
+          <ul>
+            <li>Led team practices and organized training schedules</li>
+            <li>Communicated between coaches and players</li>
+            <li>Represented team at school and community events</li>
+            <li>Analyzed opponents’ strengths and weaknesses to create game strategies</li>
+          </ul>
+        </div>
       </div>
     </section>
 
     <!-- Education & Awards -->
     <section id="education">
       <h2>Education & Awards</h2>
-      <div class="card">
-        <strong>Bachelor of Science in Informatics: Data Science (Intended)</strong> — University of Washington, Seattle, WA
-        <ul>
-          <li>Completed: CSE 122</li>
-          <li>In Progress: CSE 123, INFO 200</li>
-        </ul>
-      </div>
+      <div class="cards">
+        <div class="card">
+          <strong>Bachelor of Science in Informatics: Data Science (Intended)</strong> — University of Washington, Seattle, WA
+          <ul>
+            <li>Completed: CSE 122</li>
+            <li>In Progress: CSE 123, INFO 200</li>
+          </ul>
+        </div>
 
-      <div class="card">
-        <strong>High School Diploma</strong> — St. Johnsbury Academy Jeju, South Korea, June 2025
-        <ul>
-          <li>Grace Hopper Computer Science Award (2024) – Recipient</li>
-          <li>Runner-up, Human Rights and Peace Student Presentation Competition (2024)</li>
-          <li>Earth Network Youth Award, WAE ESG (2024)</li>
-          <li>KISAC High School Girls Basketball All Tournament Award (2025)</li>
-          <li>High School Girls Basketball MVP</li>
-          <li>KISAC High School Girls Swimming Champion (2022), Third Place (2023)</li>
-          <li>Third-Place, Jeju International Tournament Girls Basketball (2024)</li>
-          <li>Third-Place, KISAC Girls Basketball (2025)</li>
-          <li>Exchange Student, St. Johnsbury Academy, Vermont (2023)</li>
-        </ul>
+        <div class="card">
+          <strong>High School Diploma</strong> — St. Johnsbury Academy Jeju, South Korea, June 2025
+          <ul>
+            <li>Grace Hopper Computer Science Award (2024) – Recipient</li>
+            <li>Runner-up, Human Rights and Peace Student Presentation Competition (2024)</li>
+            <li>Earth Network Youth Award, WAE ESG (2024)</li>
+            <li>KISAC High School Girls Basketball All Tournament Award (2025)</li>
+            <li>High School Girls Basketball MVP</li>
+            <li>KISAC High School Girls Swimming Champion (2022), Third Place (2023)</li>
+            <li>Third-Place, Jeju International Tournament Girls Basketball (2024)</li>
+            <li>Third-Place, KISAC Girls Basketball (2025)</li>
+            <li>Exchange Student, St. Johnsbury Academy, Vermont (2023)</li>
+          </ul>
+        </div>
       </div>
     </section>
 
